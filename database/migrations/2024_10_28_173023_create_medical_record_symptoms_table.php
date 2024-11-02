@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Symptoms;
+use App\Models\Tenant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('medical_record_symptoms', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Symptoms::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Tenant;
+use App\Models\Treatment_option;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('medical_record_treatments', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Tenant::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Treatment_option::class)->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Tenant;
-use App\Models\Doctor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +12,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('Doctors', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->string('feedback_content');
-            $table->enum('rate',['Bad', 'Good' , 'Perfect']);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone_number')->nullable();
+            $table->string('role');
+
+
+            $table->foreignIdFor(Tenant::class)->constrained('tenants')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('Doctors');
     }
 };

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Medication_inventory;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
-class MedicationInventoryController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class MedicationInventoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Medication_inventory $medication_inventory)
+    public function show(Doctor $Doctor)
     {
         //
     }
@@ -42,7 +42,7 @@ class MedicationInventoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Medication_inventory $medication_inventory)
+    public function edit(Doctor $Doctor)
     {
         //
     }
@@ -50,7 +50,7 @@ class MedicationInventoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Medication_inventory $medication_inventory)
+    public function update(Request $request, Doctor $Doctor)
     {
         //
     }
@@ -58,7 +58,7 @@ class MedicationInventoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Medication_inventory $medication_inventory)
+    public function destroy(Doctor $Doctor)
     {
         //
     }

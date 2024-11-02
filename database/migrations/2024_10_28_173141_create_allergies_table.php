@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Patient;
+use App\Models\Tenant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('allergies', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Patient::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Tenant::class)->constrained()->onDelete('cascade');
+            $table->string('allergy_name');
+            $table->string('allergy_description');
+            $table->string('severity');
+            $table->string('note');
             $table->timestamps();
         });
     }

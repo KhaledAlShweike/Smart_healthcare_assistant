@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Diagnosis;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('medical_record_diagnoses', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Diagnosis::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
