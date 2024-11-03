@@ -17,10 +17,10 @@ return new class extends Migration
     {
         Schema::create('medical_notes', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Patient::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Medical_record::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Doctor::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->string('content');
             $table->timestamps();
         });

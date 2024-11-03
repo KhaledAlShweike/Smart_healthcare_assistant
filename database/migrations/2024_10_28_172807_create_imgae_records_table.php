@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('image_name');
             $table->string('image_description');
             $table->string('image_type');
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Patient::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Medical_record::class)->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

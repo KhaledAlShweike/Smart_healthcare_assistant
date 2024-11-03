@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Patient::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tenant::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->string('illness');
             $table->string('Treatment');
             $table->string('note');

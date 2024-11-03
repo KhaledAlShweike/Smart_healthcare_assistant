@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Medical_record::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->string('instruction');
             $table->string('dosage');
             $table->string('frequency');

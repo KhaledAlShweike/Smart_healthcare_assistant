@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('allergies', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Patient::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tenant::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->string('allergy_name');
             $table->string('allergy_description');
             $table->string('severity');

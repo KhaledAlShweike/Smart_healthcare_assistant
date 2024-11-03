@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('description')->nullable();
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

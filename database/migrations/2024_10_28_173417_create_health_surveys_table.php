@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('health_surveys', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Patient::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->string('title');
             $table->string('question');
             $table->string('answer');

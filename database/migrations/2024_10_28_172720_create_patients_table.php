@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('phone_number');
             $table->string('address');
-            $table->string('gender');
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('gender',['Male','Female']);
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

@@ -17,11 +17,11 @@ return new class extends Migration
     {
         Schema::create('access_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Doctor::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Role::class)->onDelete('cascade');
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Doctor::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Role::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->string('action');
-            $table->foreignIdFor(Medical_record::class)->onDelete('cascade');
             $table->timestamps();
         });
     }

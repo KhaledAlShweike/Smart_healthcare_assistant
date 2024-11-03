@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Doctors', function (Blueprint $table) {
+        Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('role');
 
 
-            $table->foreignIdFor(Tenant::class)->constrained('tenants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
 
             $table->timestamps();
         });

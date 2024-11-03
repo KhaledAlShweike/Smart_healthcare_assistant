@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('status');
             $table->date('date');
             $table->enum('outcome', ['Failed', 'Succeded']);
-            $table->foreignIdFor(Patient::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Medical_record::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

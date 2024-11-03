@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('voice_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(Patient::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignIdFor(Medical_record::class)->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId(Patient::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->string('file_name');
             $table->string('file_path');
             $table->string('description');

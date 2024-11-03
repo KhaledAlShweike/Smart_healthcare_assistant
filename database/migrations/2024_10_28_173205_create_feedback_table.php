@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Doctor::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Tenant::class)->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignIdFor(Doctor::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->string('feedback_content');
             $table->enum('rate',['Bad', 'Good' , 'Perfect']);
             $table->timestamps();
