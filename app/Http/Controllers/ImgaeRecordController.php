@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Imgae_record;
+use App\Models\Image_record;
 use Illuminate\Http\Request;
 
 class ImgaeRecordController extends Controller
@@ -34,7 +34,7 @@ class ImgaeRecordController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Imgae_record $imgae_record)
+    public function show(Image_record $imgae_record)
     {
         //
     }
@@ -42,7 +42,7 @@ class ImgaeRecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Imgae_record $imgae_record)
+    public function edit(Image_record $imgae_record)
     {
         //
     }
@@ -50,7 +50,7 @@ class ImgaeRecordController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Imgae_record $imgae_record)
+    public function update(Request $request, Image_record $imgae_record)
     {
         //
     }
@@ -58,7 +58,7 @@ class ImgaeRecordController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Imgae_record $imgae_record)
+    public function destroy(Image_record $imgae_record)
     {
         //
     }

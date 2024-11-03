@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Imgae_record extends Model
+class Image_record extends Model
 {
     //
 }
