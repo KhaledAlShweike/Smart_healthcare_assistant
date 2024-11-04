@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mr_symptom', function (Blueprint $table) {
+        Schema::create('alter_medical_record_symptom', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->foreignIdFor(Symptoms::class)->onDelete('set null')->nullable();

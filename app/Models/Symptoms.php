@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Symptoms extends Model
 {
-    public function medicalRecords()
+    public function medicalRecords(): BelongsToMany
     {
-        return $this->belongsToMany(Medical_Record::class, 'mr_symptom', 'symptom_id', 'medical_record_id');
+        return $this->belongsToMany(Medical_Record::class, 'alter_medical_record_symptom', 'symptom_id', 'medical_record_id');
     }
 }
