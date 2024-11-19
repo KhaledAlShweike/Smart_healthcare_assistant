@@ -29,4 +29,9 @@ class Doctor extends Model
       {
           return $this->hasManyThrough(Patient::class, Feedback::class, 'doctor_id', 'id', 'id', 'patient_id');
       }
+
+      public function Role()
+      {
+        return $this->hasMany(Role::class);
+      }
 }

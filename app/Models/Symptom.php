@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Symptoms extends Model
+class Symptom extends Model
 {
     public function medicalRecords(): BelongsToMany
     {

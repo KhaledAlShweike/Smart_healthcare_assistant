@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Doctor;
 use App\Models\Tenant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('description')->nullable();
             $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Doctor::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

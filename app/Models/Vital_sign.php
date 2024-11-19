@@ -10,4 +10,9 @@ class Vital_sign extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+
+    public function Medical_record()
+    {
+        return $this->belongsTo(Medical_record::class);
+    }
 }
