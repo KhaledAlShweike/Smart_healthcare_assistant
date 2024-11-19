@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Medical_record;
 use App\Models\Symptoms;
 use App\Models\Tenant;
 use Illuminate\Database\Migrations\Migration;
@@ -16,8 +17,7 @@ return new class extends Migration
         Schema::create('medical_record_symptoms', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Symptoms::class)->onDelete('set null')->nullable();
-            $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
-
+            $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }

@@ -19,10 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number')->nullable();
             $table->string('role');
-
-
+            $table->string('specialization');
+            $table->string('clinic_address');
             $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
-
             $table->timestamps();
         });
     }

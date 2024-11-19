@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Diagnosis;
 use App\Models\Medical_record;
-use App\Models\Symptoms;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alter_medical_record_symptom', function (Blueprint $table) {
+        Schema::create('medical_record_diagnoses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Medical_record::class)->onDelete('set null')->nullable();
-            $table->foreignIdFor(Symptoms::class)->onDelete('set null')->nullable();
+            $table->foreignIdFor(Diagnosis::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mr_symptom');
+        Schema::dropIfExists('medical_record_diagnoses');
     }
 };

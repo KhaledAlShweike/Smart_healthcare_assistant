@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignIdFor(Patient::class)->onDelete('set null')->nullable();
             $table->foreignIdFor(Doctor::class)->onDelete('set null')->nullable();
             $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
-            $table->string('diagnosis');
-            $table->string('symptoms');
-            $table->string('treatment');
+            $table->text('diagnosis');
+            $table->text('symptoms');
+            $table->text('treatment');
             $table->date('record_date');
             $table->timestamps();
         });

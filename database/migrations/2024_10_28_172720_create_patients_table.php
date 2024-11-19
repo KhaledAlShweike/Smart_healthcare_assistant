@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->date('birth_date');
             $table->string('phone_number');
+            $table->string('password');
             $table->string('address');
             $table->enum('gender',['Male','Female']);
+            $table->text('medical_history');
+            $table->
             $table->foreignIdFor(Tenant::class)->onDelete('set null')->nullable();
             $table->timestamps();
         });

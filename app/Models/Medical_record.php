@@ -31,4 +31,10 @@ class Medical_record extends Model
     {
         return $this->hasMany(Voice_record::class);
     }
+
+    public function Doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+
 }
