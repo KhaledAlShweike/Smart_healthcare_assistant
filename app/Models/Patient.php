@@ -22,8 +22,19 @@ class Patient extends Model
         return $this->hasMany(Medical_record::class);
     }
 
-    public function VitalSigns()
+    public function VitalSign()
     {
         return $this->hasMany(Vital_sign::class);
+    }
+
+    public function Feedback()
+    {
+        return $this->hasMany(Feedback::class);
+    }
+
+    // Doctors through feedback (many-to-many)
+    public function Doctor()
+    {
+        return $this->hasManyThrough(Doctor::class, Feedback::class, 'patient_id', 'id', 'id', 'doctor_id');
     }
 }

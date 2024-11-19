@@ -17,4 +17,16 @@ class Doctor extends Model
     {
         return $this->hasMany(Medical_record::class);
     }
+
+      // Feedback relationship (one-to-many)
+      public function feedbacks()
+      {
+          return $this->hasMany(Feedback::class);
+      }
+
+      // Patients through feedback (many-to-many)
+      public function patients()
+      {
+          return $this->hasManyThrough(Patient::class, Feedback::class, 'doctor_id', 'id', 'id', 'patient_id');
+      }
 }
