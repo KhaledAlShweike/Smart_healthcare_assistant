@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('birth_date');
             $table->string('phone_number');
-            $table->string('password')->encrypted();
+            $table->text('password');
             $table->string('photo')->nullable();
             $table->string('address');
             $table->enum('gender',['Male','Female']);

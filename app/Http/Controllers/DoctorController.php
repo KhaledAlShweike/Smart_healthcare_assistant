@@ -4,62 +4,68 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+
+
+    public function register(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:doctors,email',
+        'password' => 'required|string|min:8|confirmed',
+        'phone_number' => 'required|string|max:15',
+        'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'role' => 'required|string|max:50',
+        'specialization' => 'required|string|max:255',
+        'clinic_address' => 'required|string|max:255',
+    ]);
+
+    if ($request->hasFile('photo')) {
+        $validatedData['photo'] = $request->file('photo')->store('photos', 'public');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    // Encrypt the password
+    $validatedData['password'] = Crypt::encrypt($validatedData['password']);
+
+    // Save the doctor
+    $doctor = Doctor::create($validatedData);
+
+    return response()->json(['message' => 'Doctor registered successfully!', 'doctor' => $doctor], 201);
+}
+
+
+
+public function login(Request $request)
+{
+    $validatedData = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|string|min:8',
+    ]);
+
+    $doctor = Doctor::where('email', $validatedData['email'])->first();
+
+    if (!$doctor) {
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    // Decrypt and compare the stored password
+    if (Crypt::decrypt($doctor->password) !== $validatedData['password']) {
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Doctor $Doctor)
-    {
-        //
-    }
+    // Generate a token (optional, for API-based authentication)
+    $token = $doctor->createToken('doctor-auth-token')->plainTextToken;
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Doctor $Doctor)
-    {
-        //
-    }
+    return response()->json([
+        'message' => 'Login successful',
+        'doctor' => $doctor,
+        'token' => $token, // Optional
+    ]);
+}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Doctor $Doctor)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Doctor $Doctor)
-    {
-        //
-    }
+
 }
