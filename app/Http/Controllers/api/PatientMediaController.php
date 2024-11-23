@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Image_record;
 use App\Models\Medical_record;
 use App\Models\Voice_record;
