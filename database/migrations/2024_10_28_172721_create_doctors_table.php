@@ -16,8 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone_number')->nullable();
+            $table->text('password');
+            $table->string('phone_number');
+            $table->string('photo');
             $table->string('role');
             $table->string('specialization');
             $table->string('clinic_address');

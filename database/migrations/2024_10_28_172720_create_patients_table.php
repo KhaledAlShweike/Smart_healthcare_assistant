@@ -18,7 +18,8 @@ return new class extends Migration
             $table->date('birth_date');
             $table->integer('case_number')->unique();
             $table->string('phone_number');
-            $table->string('password');
+            $table->text('password');
+            $table->string('photo')->nullable();
             $table->string('address');
             $table->enum('gender',['Male','Female']);
             $table->text('medical_history');

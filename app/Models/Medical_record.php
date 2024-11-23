@@ -14,7 +14,7 @@ class Medical_record extends Model
 
     public function Symptoms()
     {
-        return $this->belongsToMany(Symptoms::class, 'alter_medical_record_symptom', 'medical_record_id', 'symptom_id');
+        return $this->belongsToMany(Symptom::class, 'alter_medical_record_symptom', 'medical_record_id', 'symptom_id');
     }
 
     public function Diagnosis()
@@ -37,4 +37,8 @@ class Medical_record extends Model
         return $this->hasOne(Doctor::class);
     }
 
+    public function Vital_sign()
+    {
+        return $this->hasMany(Vital_sign::class);
+    }
 }
