@@ -3,17 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Doctor extends Model
-{
-    use HasFactory;
-
-    
-=======
 use Illuminate\Notifications\Notifiable;
-use App\Models\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Crypt;
 
 class Doctor extends Model
@@ -49,7 +40,6 @@ class Doctor extends Model
         $this->attributes['password'] = Crypt::encrypt($value);
     }
 
->>>>>>> 11108f1273b7ea9f4965ae82f275cbc6d21399dd
     public function Tenant()
     {
         return $this->belongsToMany(Tenant::class, "doctor_tenant", "doctor_id", "tenant_id");
