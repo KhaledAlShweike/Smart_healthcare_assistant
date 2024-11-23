@@ -1,0 +1,32 @@
+Register API Request
+
+POST /api/register
+{
+    "name": "Dr. John Doe",
+    "email": "john@example.com",
+    "password": "securepassword",
+    "password_confirmation": "securepassword",
+    "phone_number": "1234567890",
+    "photo": "photo.jpg",
+    "role": "doctor",
+    "specialization": "Cardiologist",
+    "clinic_address": "123 Clinic St"
+}
+
+
+
+Login API Request
+
+POST /api/login
+{
+    "email": "john@example.com",
+    "password": "securepassword"
+}
+
+
+Forgot Password API Request
+
+POST /api/forgot-password
+{
+    "email": "john@example.com"
+}
