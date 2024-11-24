@@ -1,13 +1,7 @@
 <?php
-
-<<<<<<< HEAD
-namespace App\Http\Controllers;
-
-=======
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
->>>>>>> 11108f1273b7ea9f4965ae82f275cbc6d21399dd
 use App\Models\Image_record;
 use App\Models\Medical_record;
 use App\Models\Voice_record;
