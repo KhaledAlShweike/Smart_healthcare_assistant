@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('symptoms');
             $table->text('treatment');
             $table->date('record_date');
+            $table->text('critical_notes')->encrypt();
             $table->timestamps();
         });
     }
