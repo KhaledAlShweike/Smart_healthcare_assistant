@@ -42,7 +42,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport', // استخدام Passport لحارس API
+            'provider' => 'users',
+            'hash' => false, // يمكنك تعيينه إلى true إذا كنت تستخدم كلمة مرور مشفرة
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

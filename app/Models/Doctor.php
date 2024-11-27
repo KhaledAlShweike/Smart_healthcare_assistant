@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Crypt;
 
 class Doctor extends Model
 {
-    use HasApiTokens, Notifiable;
+  
 
     protected $fillable = [
         'name',

@@ -5,11 +5,12 @@ use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
+
+
 class Patient extends Model
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens;
 
     public function Tenant()
     {
