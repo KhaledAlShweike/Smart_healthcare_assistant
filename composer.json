@@ -7,7 +7,11 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
+<<<<<<< HEAD
         "laravel/passport": "^12.3",
+=======
+        "laravel/sanctum": "*",
+>>>>>>> 13513b1db3fdb63bcb0ab3a902d49db79c3d25da
         "laravel/tinker": "^2.9",
         "tymon/jwt-auth": "^2.0"
     },
