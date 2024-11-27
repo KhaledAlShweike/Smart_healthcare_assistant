@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "a26ab814dad686707582501853037d19",
-=======
     "content-hash": "fa6389aaa24320b0d82fd79421983327",
->>>>>>> 13513b1db3fdb63bcb0ab3a902d49db79c3d25da
     "packages": [
         {
             "name": "brick/math",
@@ -1537,8 +1533,6 @@
             "time": "2024-11-12T14:59:47+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laravel/sanctum",
             "version": "v4.0.3",
             "source": {
