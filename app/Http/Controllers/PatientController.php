@@ -105,38 +105,38 @@ class PatientController extends Controller
 
 
 public function login(Request $request)
-    {
-        // Validate incoming request
-        $validatedData = $request->validate([
-            'phone_number' => 'required|string',
-            'password' => 'required|string',
-        ]);
+{
+    // Validate incoming request
+    $validatedData = $request->validate([
+        'phone_number' => 'required|string',
+        'password' => 'required|string',
+    ]);
 
-        // Find user by phone number
-        $user = Patient::where('phone_number', $validatedData['phone_number'])->first();
+    // Attempt to find the user
+    $user = Patient::where('phone_number', $validatedData['phone_number'])->first();
 
-        // Check if user exists and the password matches
-        if (!$user || !Hash::check($validatedData['password'], $user->password)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        // Generate Sanctum Token
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-        ]);
+    // Verify the password
+    if (!$user || !Hash::check($validatedData['password'], $user->password)) {
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
 
-    public function logout(Request $request)
-    {
-        // Revoke the token of the authenticated user
-        $request->user()->currentAccessToken()->delete();
+    // Generate Passport Token
+    $token = $user->createToken('auth_token')->accessToken;
 
-        return response()->json(['message' => 'Logged out successfully']);
-    }
+    return response()->json([
+        'access_token' => $token,
+        'token_type' => 'Bearer',
+    ]);
+}
 
+
+public function logout(Request $request)
+{
+    // احذف التوكن الحالي للمستخدم
+    $request->user()->token()->revoke();
+
+    return response()->json(['message' => 'Logged out successfully']);
+}
     public function refresh(Request $request)
     {
         return response()->json(['message' => 'Sanctum does not use refresh tokens. Please log in again if needed.'], 400);

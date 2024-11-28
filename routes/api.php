@@ -7,7 +7,7 @@ use App\Http\Controllers\PatientController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})->middleware('auth:api');
 Route::post('register', [PatientController::class, 'register']);
 Route::delete('patients/{id}', [PatientController::class, 'delete']);
 Route::put('patientss/{id}', [PatientController::class, 'update']);

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -12,6 +12,10 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+ 
+     protected $policies = [
+        // Add your policies here
+    ];
     public function register()
     {
 
@@ -25,7 +29,15 @@ class AuthServiceProvider extends ServiceProvider
  */
 public function boot()
 {
-    Passport::loadKeysFrom(storage_path('oauth-private.key'));
-    Passport::routes();
+    $this->registerPolicies();
+
+        // تسجيل الراوتس يدويًا
+        Passport::ignoreRoutes();
+
+        // إعداد مدة صلاحية التوكنات إذا أردت
+        Passport::tokensExpireIn(now()->addDays(15));
+        Passport::refreshTokensExpireIn(now()->addDays(30));
+        
+       
 }
 }
