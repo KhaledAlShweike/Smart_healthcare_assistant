@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Crypt;
 
 class Doctor extends Model
 {
-  
+
+    use \Laravel\Passport\HasApiTokens, Notifiable;
 
     protected $fillable = [
         'name',
@@ -28,16 +29,14 @@ class Doctor extends Model
     ];
 
 
-    public function getPasswordAttribute($value)
-    {
-        return Crypt::decrypt($value);
-    }
-
-    // Mutator for encrypting the password
+    // Mutator to hash password automatically
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = Crypt::encrypt($value);
+        $this->attributes['password'] = \Illuminate\Support\Facades\Hash::make($value);
     }
+
+
+
 
     public function Tenant()
     {

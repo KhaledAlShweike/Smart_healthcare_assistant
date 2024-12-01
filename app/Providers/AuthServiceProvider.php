@@ -12,7 +12,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
- 
+
      protected $policies = [
         // Add your policies here
     ];
@@ -37,7 +37,15 @@ public function boot()
         // إعداد مدة صلاحية التوكنات إذا أردت
         Passport::tokensExpireIn(now()->addDays(15));
         Passport::refreshTokensExpireIn(now()->addDays(30));
-        
-       
+
+
 }
+
+/*public function boot()
+{
+    $this->registerPolicies();
+
+    Passport::routes();
+}*/
+
 }
